@@ -14,6 +14,24 @@ function selectionSort(numbersArray) {
     numbersArray[index] = numbersArray[minIndex]
     numbersArray[minIndex] = temp
   }
+}
 
-  return numbersArray
+function recusiveSelectionSort(numbersArray, left, right) {
+  if  (left === right) {
+    return
+  }
+
+  let minIndex = left
+
+  for (let index = left + 1; index <= right; index++) {
+    if  (numbersArray[index] < numbersArray[minIndex]) {
+      minIndex = index
+    }
+  }
+
+  const temp = numbersArray[minIndex]
+  numbersArray[minIndex] = numbersArray[left]
+  numbersArray[left] = temp
+
+  recusiveSelectionSort(numbersArray, left + 1, right)
 }

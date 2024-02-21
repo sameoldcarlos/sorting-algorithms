@@ -6,14 +6,14 @@ export function less(firstItem, secondItem) {
   return key(firstItem) < key(secondItem)
 }
 
-export function exchange(firstItem, secondItem) {
-  const temp = firstItem
-  firstItem = secondItem
-  secondItem = temp
+export function exchange(array, firstItem, secondItem) {
+  const temp = array[firstItem]
+  array[firstItem] = array[secondItem]
+  array[secondItem] = temp
 }
 
 export function compareAndExchange(firstItem, secondItem) {
   if (less(secondItem, firstItem)) {
-    [firstItem, secondItem] = exchange(firstItem, secondItem)
+    exchange(firstItem, secondItem)
   }
 }

@@ -1,20 +1,16 @@
-import { key, less, exchange } from './utils/commonFunctions.js'
+import { less, exchange } from './utils/commonFunctions.js'
 
-function selectionSort(numbersArray) {
-  let minIndex, temp
+function selectionSort(numbersArray, left, right) {
+  let minIndex = left
 
-  for (let index = 0; index < numbersArray.length - 1; index++) {
-    minIndex = index
-
-    for (let nextIndex = index + 1; nextIndex < numbersArray.length; nextIndex++) {
+  for (let index = left; index < right; index++) {
+    for (let nextIndex = index + 1; nextIndex <= right; nextIndex++) {
       if (less(numbersArray[nextIndex], numbersArray[minIndex])) {
-        exchange(numbersArray, numbersArray[nextIndex], numbersArray[index])
+        minIndex = nextIndex
       }
     }
 
-    temp = numbersArray[index]
-    numbersArray[index] = numbersArray[minIndex]
-    numbersArray[minIndex] = temp
+    exchange(numbersArray, index, minIndex)
   }
 }
 

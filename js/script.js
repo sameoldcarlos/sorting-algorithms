@@ -1,3 +1,5 @@
+import { key, less, exchange } from './utils/commonFunctions.js'
+
 function selectionSort(numbersArray) {
   let minIndex, temp
 
@@ -34,4 +36,14 @@ function recusiveSelectionSort(numbersArray, left, right) {
   numbersArray[left] = temp
 
   recusiveSelectionSort(numbersArray, left + 1, right)
+}
+
+function bubbleSort(numbersArray, left, right) {
+  for (let i = left; i < right; i++) {
+    for (let j = left; j < right; j++) {
+      if (less(numbersArray[j+1], numbersArray[j])) {
+        exchange(numbersArray, j + 1, j)
+      }
+    }
+  }
 }

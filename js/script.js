@@ -7,8 +7,8 @@ function selectionSort(numbersArray) {
     minIndex = index
 
     for (let nextIndex = index + 1; nextIndex < numbersArray.length; nextIndex++) {
-      if (numbersArray[nextIndex] < numbersArray[minIndex]) {
-        minIndex = nextIndex
+      if (less(numbersArray[nextIndex], numbersArray[minIndex])) {
+        exchange(numbersArray, numbersArray[nextIndex], numbersArray[index])
       }
     }
 
@@ -26,14 +26,12 @@ function recusiveSelectionSort(numbersArray, left, right) {
   let minIndex = left
 
   for (let index = left + 1; index <= right; index++) {
-    if  (numbersArray[index] < numbersArray[minIndex]) {
+    if (less(numbersArray[index], numbersArray[minIndex])) {
       minIndex = index
     }
   }
 
-  const temp = numbersArray[minIndex]
-  numbersArray[minIndex] = numbersArray[left]
-  numbersArray[left] = temp
+  exchange(numbersArray, minIndex, left)
 
   recusiveSelectionSort(numbersArray, left + 1, right)
 }

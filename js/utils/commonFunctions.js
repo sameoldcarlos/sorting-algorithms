@@ -10,14 +10,10 @@ export function exchange(firstItem, secondItem) {
   const temp = firstItem
   firstItem = secondItem
   secondItem = temp
-
-  return [firstItem, secondItem]
 }
 
 export function compareAndExchange(firstItem, secondItem) {
   if (less(secondItem, firstItem)) {
     [firstItem, secondItem] = exchange(firstItem, secondItem)
   }
-
-  return [firstItem, secondItem]
 }
